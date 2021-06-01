@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @employee.name%></h1>
+  <p class="lead"><strong>Employee ID:</strong> <%= @employee.emp_id%></p>
+  <p class="lead"><strong>Age:</strong> <%= @employee.age%></p>
+  <p class="lead">Gender<strong> <%= @employee.gender%></strong></p>
+  <p class="lead">Phone<strong> <%= @employee.phone%></strong></p>
+  <p class="lead">Email<strong> <%= @employee.email%></strong></p>
+  <p class="lead">Address<strong> <%= @employee.skills%></strong></p>
+  <hr class="my-4">
+  <p><strong>Skills:</strong> <%= @employee.skills%> </p>
+  <p><strong>Experience:</strong> <%= @employee.experience%> </p>
+   <%= link_to 'Edit', edit_employee_path(@employee), class: "btn btn-dark" %>
+  <%= link_to 'Delete', @employee, method: :delete, class: "btn btn-dark"%>
+</div>
