@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all #page(params[:page] || 1)
+    @employees = Employee.page(params[:page] || 1)
   end
 
   def show

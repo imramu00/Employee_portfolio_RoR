@@ -18,4 +18,7 @@
   </tbody>
   <% end %>
 </table>
-<%= link_to 'Add Employee', new_employee_path, class: "btn btn-dark" %>
+<%= link_to 'Add Employee', new_employee_path, class: "btn btn-dark mybtn" %>
+
+
+<%= paginate @employees%>
