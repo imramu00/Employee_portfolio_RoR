@@ -1,7 +1,8 @@
 class EmployeesController < ApplicationController
-
+  @@form_values = ['name','age','emp','id','gender','phone','email','address','skills']
   def index
     @employees = Employee.all
+
   end
 
   def show
@@ -10,6 +11,7 @@ class EmployeesController < ApplicationController
 
   def new #display the form for new record
     @employee = Employee.new
+    @values = @@form_values
   end
 
   def create #save the record
@@ -25,6 +27,7 @@ class EmployeesController < ApplicationController
 
   def edit #display existing record
     @employee = Employee.find(params[:id])
+    @values = @@form_values
   end
 
   def update #save updated changes
@@ -44,6 +47,6 @@ class EmployeesController < ApplicationController
 
   private
     def allowed_params
-      params.require(:employee).permit(:name, :age, :emp_id, :gender, :phone, :email, :address, :skills, :experience)
+      params.require(:employee).permit(:name, :age, :emp_id, :gender, :phone, :email, :address, :skills)
     end
 end
