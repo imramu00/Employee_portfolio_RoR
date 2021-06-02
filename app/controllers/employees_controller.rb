@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+
+  before_action :employee, only: [:show, :edit, :update, :destroy]
   def index
     @employees = Employee.page(params[:page] || 1)
   end
@@ -17,6 +19,7 @@ class EmployeesController < ApplicationController
     if @employee.save
       redirect_to employees_path
     else
+      flash.now[:error] = "Unable to save the employee details"
       render 'new'
     end
 
@@ -31,6 +34,7 @@ class EmployeesController < ApplicationController
     if @employee.update(allowed_params)
       redirect_to employees_path
     else
+      flash.now[:error] = "Unable to save the employee details"
       render 'new'
     end
   end
