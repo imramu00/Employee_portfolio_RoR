@@ -40,10 +40,15 @@
     <%= f.text_field :skills, class:"form-control"  %>
   </div>
 
+  <% if @employee.persisted? %>
+    <div class = "mybtn">
+        <%= f.submit 'Update', class: "btn btn-dark btn-lg" %>
+    </div>
+  <% else %>
+    <div class = "mybtn">
+        <%= f.submit 'Add', class: "btn btn-dark btn-lg" %>
+    </div>
+  <% end %>
 
-
-<div class = "mybtn">
-    <%= f.submit 'Add', class: "btn btn-dark btn-lg" %>
 </div>
-</div>
- <% end %>
+<% end %>
