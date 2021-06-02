@@ -1,10 +1,10 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @employees = Employee.all #page(params[:page] || 1)
   end
 
   def show
-    @employee = Employee.find(params[:id])
+   employee
   end
 
   def new #display the form for new record
@@ -23,11 +23,11 @@ class EmployeesController < ApplicationController
   end
 
   def edit #display existing record
-    @employee = Employee.find(params[:id])
+    employee
   end
 
   def update #save updated changes
-    @employee = Employee.find(params[:id])
+    employee
     if @employee.update(allowed_params)
       redirect_to employees_path
     else
@@ -36,7 +36,7 @@ class EmployeesController < ApplicationController
   end
 
   def destroy #delete the record
-    @employee = Employee.find(params[:id])
+    employee
     @employee.destroy
     redirect_to employees_path
   end
@@ -44,5 +44,9 @@ class EmployeesController < ApplicationController
   private
     def allowed_params
       params.require(:employee).permit(:name, :age, :emp_id, :gender, :phone, :email, :address, :skills)
+    end
+
+    def employee
+      @employee ||= Employee.find(params[:id])
     end
 end
